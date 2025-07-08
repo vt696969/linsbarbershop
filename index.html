@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lins Barbershop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(-45deg, #0f0f0f, #1a1a1a, #2b2b2b, #0f0f0f);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: #f5f5f5;
+      line-height: 1.6;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header {
+      background: #000;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-family: 'Bebas Neue', cursive;
+      color: gold;
+    }
+
+    header h1 span { color: #fff; }
+
+    nav a {
+      color: #f5f5f5;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    nav a:hover { color: gold; }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    /* Espaço sutil entre Home e Serviços */
+    #home {
+      padding-bottom: 60px;
+    }
+
+    #servicos {
+      padding-top: 40px;
+    }
+
+    h2 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2.2rem;
+      color: gold;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      background: linear-gradient(to right, #ffdd00, #ffaa00);
+      color: #000;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+
+    .servico-lista {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .card:hover {
+      background: rgba(255, 215, 0, 0.2);
+    }
+
+    .card.selected {
+      background: gold;
+      color: #000;
+      font-weight: bold;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input, select {
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #1e1e1e;
+      color: #fff;
+    }
+
+    input[readonly] {
+      cursor: pointer;
+      background: #333;
+    }
+
+    label {
+      font-weight: 600;
+      color: gold;
+    }
+
+    .mapa iframe {
+      width: 100%;
+      border-radius: 12px;
+      margin-top: 20px;
+      border: none;
+      height: 300px;
+    }
+
+    #contato p {
+      text-align: center;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .contato-links {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      font-size: 1.2rem;
+      margin-top: 15px;
+    }
+
+    .contato-links a {
+      color: #f5f5f5;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.3s ease;
+    }
+
+    .contato-links a:hover {
+      color: gold;
+    }
+
+    footer {
+      text-align: center;
+      background: #000;
+      padding: 20px;
+      color: #888;
+      margin-top: 60px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>LINS <span>BARBERSHOP</span></h1>
+    <nav>
+      <a href="#home">Início</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <section id="home">
+    <h2>Estilo é identidade</h2>
+    <p style="text-align: center;">Agende seu corte com quem entende do assunto</p>
+    <div style="text-align: center; margin-top: 20px;">
+      <a href="#agendamento" class="btn">Agendar agora</a>
+    </div>
+  </section>
+
+  <section id="servicos">
+    <h2>Serviços</h2>
+    <div class="servico-lista">
+      <div class="card" data-servico="Acabamento"><h3>Acabamento</h3><p>🕒 10 minutos<br>💰 A partir de R$8</p></div>
+      <div class="card" data-servico="Barba"><h3>Barba</h3><p>🕒 20 minutos<br>💰 A partir de R$20</p></div>
+      <div class="card" data-servico="Corte"><h3>Corte</h3><p>🕒 30 minutos<br>💰 A partir de R$30</p></div>
+      <div class="card" data-servico="Corte + Barba"><h3>Corte + Barba</h3><p>🕒 45 minutos<br>💰 A partir de R$45</p></div>
+      <div class="card" data-servico="Corte Disfarçado"><h3>Corte Disfarçado</h3><p>🕒 30 minutos<br>💰 A partir de R$60</p></div>
+      <div class="card" data-servico="Corte Infantil"><h3>Corte Infantil</h3><p>🕒 45 minutos<br>💰 A partir de R$40</p></div>
+      <div class="card" data-servico="Corte Simples"><h3>Corte Simples</h3><p>🕒 25 minutos<br>💰 A partir de R$20</p></div>
+      <div class="card" data-servico="Discoloração / Nevou"><h3>Discoloração / Nevou</h3><p>🕒 2 horas<br>💰 A partir de R$95</p></div>
+      <div class="card" data-servico="Pigmentação"><h3>Pigmentação</h3><p>🕒 10 minutos<br>💰 A partir de R$15</p></div>
+      <div class="card" data-servico="Reflexo"><h3>Reflexo</h3><p>🕒 1 hora<br>💰 A partir de R$80</p></div>
+      <div class="card" data-servico="Sobrancelha"><h3>Sobrancelha</h3><p>🕒 10 minutos<br>💰 A partir de R$8</p></div>
+    </div>
+  </section>
+
+  <section id="agendamento">
+    <h2>Agende seu horário</h2>
+    <form id="form-agendamento">
+      <input type="text" id="nome" placeholder="Nome" required />
+      <input type="text" id="sobrenome" placeholder="Sobrenome" required />
+      <input type="tel" id="telefone" placeholder="Seu telefone" required />
+      <input type="text" id="servico" placeholder="Serviço (clique acima)" readonly required />
+
+      <label for="data">Data:</label>
+      <input type="date" id="data" name="data" min="2025-07-08" max="2025-12-31" required />
+
+      <label for="hora">Horário:</label>
+      <select id="hora" required>
+        <option value="">Selecione o horário</option>
+        <option>09:00</option><option>09:30</option><option>10:00</option><option>10:30</option>
+        <option>11:00</option><option>11:30</option><option>12:00</option><option>12:30</option>
+        <option>13:00</option><option>13:30</option><option>14:00</option><option>14:30</option>
+        <option>15:00</option><option>15:30</option><option>16:00</option><option>16:30</option>
+        <option>17:00</option><option>17:30</option><option>18:00</option><option>18:30</option>
+        <option>19:00</option><option>19:30</option><option>20:00</option><option>20:30</option>
+      </select>
+
+      <button class="btn" type="submit">Reservar pelo WhatsApp</button>
+    </form>
+  </section>
+
+  <section id="contato">
+    <h2>Contato</h2>
+    <p>
+      📍 Estr. do Mata Sete, 347 - Sepetiba, Rio de Janeiro - RJ<br/>
+      🕒 Segunda a Sábado, 09:00 às 20:30<br/>
+      📞 <a href="https://wa.me/5521998625687" target="_blank" style="color:inherit; text-decoration:none;">
+          <i class="fab fa-whatsapp"></i> (21) 99862-5687
+      </a>
+    </p>
+    <div class="contato-links">
+      <a href="https://wa.me/5521998625687" target="_blank" title="WhatsApp Lins Barbershop" style="color:inherit;">
+        <i class="fab fa-whatsapp fa-2x"></i> WhatsApp
+      </a>
+      <a href="https://instagram.com/linsbarbershop" target="_blank" title="Instagram Lins Barbershop" style="color:inherit;">
+        <i class="fab fa-instagram fa-2x"></i> Instagram
+      </a>
+    </div>
+    <div class="mapa">
+      <iframe src="https://www.google.com/maps?q=Estr.+do+Mata+Sete,+347+-+Sepetiba,+Rio+de+Janeiro+-+RJ,+23530-808&output=embed" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Lins Barbershop. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    // Selecionar serviço ao clicar na caixinha
+    document.querySelectorAll(".card").forEach(card => {
+      card.addEventListener("click", () => {
+        document.querySelectorAll(".card").forEach(c => c.classList.remove("selected"));
+        card.classList.add("selected");
+        document.getElementById("servico").value = card.dataset.servico;
+      });
+    });
+
+    // Enviar dados via WhatsApp
+    document.getElementById("form-agendamento").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const nome = document.getElementById("nome").value.trim();
+      const sobrenome = document.getElementById("sobrenome").value.trim();
+      const telefone = document.getElementById("telefone").value.trim();
+      const servico = document.getElementById("servico").value.trim();
+      const data = document.getElementById("data").value;
+      const hora = document.getElementById("hora").value;
+
+      if(!servico) {
+        alert("Por favor, selecione um serviço clicando em uma das caixinhas acima.");
+        return;
+      }
+
+      const mensagem = `Olá! Quero agendar um horário na Lins Barbershop:%0A%0A` +
+        `👤 Nome: ${nome} ${sobrenome}%0A` +
+        `📞 Telefone: ${telefone}%0A` +
+        `✂️ Serviço: ${servico}%0A` +
+        `📅 Data: ${data}%0A` +
+        `🕒 Hora: ${hora}`;
+
+      const urlWhats = `https://wa.me/5521998625687?text=${mensagem}`;
+      window.open(urlWhats, "_blank");
+    });
+  </script>
+</body>
+</html>
+
